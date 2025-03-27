@@ -25,7 +25,7 @@ API RESTful desarrollada en Java con Spring Boot para la gestión de usuarios y 
 | GET    | `/estados-tarea`                  | Obtiene los estados de las tareas disponibles.   |
 | GET    | `/estados-tarea/{id}`             | Obtiene un estado específico de una tarea por ID.|
 
-Los detalles completos de cada endpoint se encuentran definidos en el archivo [OpenAPI YAML](./api.yml) incluido en este proyecto.
+Los detalles completos de cada endpoint se encuentran definidos en el archivo [OpenAPI YAML](./src/main/resources/openapi.yml) incluido en este proyecto.
 
 ---
 
