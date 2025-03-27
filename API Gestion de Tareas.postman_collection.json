@@ -1,0 +1,1429 @@
+{
+	"info": {
+		"_postman_id": "041ce7ee-7145-4da5-9c98-be44a3ba2c37",
+		"name": "API Gestion de Tareas",
+		"description": "API RESTful para gestionar usuarios y tareas con autenticaciÃ³n JWT y operaciones CRUD.\n\nContact Support:\n Name: Nicolas Montecinos\n Email: nico20q@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13329158",
+		"_collection_link": "https://triplea-workspace.postman.co/workspace/EDU---COFAN-APP~751582a5-997e-46be-b4e8-c137f453fe98/collection/13329158-041ce7ee-7145-4da5-9c98-be44a3ba2c37?action=share&source=collection_link&creator=13329158"
+	},
+	"item": [
+		{
+			"name": "tareas",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtener tarea por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tareas/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) ID de la tarea"
+										}
+									]
+								},
+								"description": "Obtiene una tarea especÃ­fica por su ID."
+							},
+							"response": [
+								{
+									"name": "Tarea encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+								},
+								{
+									"name": "Se requiere autenticaciÃ³n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+								},
+								{
+									"name": "Tarea no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Actualizar tarea por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estadoId\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tareas/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) ID de la tarea"
+										}
+									]
+								},
+								"description": "Actualiza una tarea especÃ­fica."
+							},
+							"response": [
+								{
+									"name": "Tarea actualizada exitosamente",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estadoId\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+								},
+								{
+									"name": "Se requiere autenticaciÃ³n",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estadoId\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+								},
+								{
+									"name": "Tarea no encontrada",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estadoId\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Eliminar tarea por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tareas/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) ID de la tarea"
+										}
+									]
+								},
+								"description": "Elimina una tarea especÃ­fica."
+							},
+							"response": [
+								{
+									"name": "Tarea eliminada correctamente",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Se requiere autenticaciÃ³n",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Tarea no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "usuario",
+					"item": [
+						{
+							"name": "{userId}",
+							"item": [
+								{
+									"name": "Obtener tareas por usuario",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tareas/usuario/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tareas",
+												"usuario",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<integer>",
+													"description": "(Required) ID del usuario cuyas tareas serÃ¡n obtenidas."
+												}
+											]
+										},
+										"description": "Devuelve la lista de tareas asociadas al usuario cuyo `userId` es proporcionado."
+									},
+									"response": [
+										{
+											"name": "Lista de tareas obtenida correctamente para el usuario.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/tareas/usuario/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"tareas",
+														"usuario",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Se requiere autenticaciÃ³n",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/tareas/usuario/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"tareas",
+														"usuario",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Usuario no encontrado o no tiene tareas.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/tareas/usuario/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"tareas",
+														"usuario",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Obtener tareas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tareas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tareas"
+							]
+						},
+						"description": "Devuelve la lista de todas las tareas creadas por el usuario autenticado."
+					},
+					"response": [
+						{
+							"name": "Lista de tareas obtenida correctamente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tareas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Se requiere autenticaciÃ³n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tareas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"descripcion\": \"<string>\",\n      \"fechaVencimiento\": \"<date>\",\n      \"estado\": \"<string>\",\n      \"usuario\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear nueva tarea",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descripcion\": \"<string>\",\n  \"estadoId\": \"<integer>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"usuarioId\": \"<integer>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tareas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tareas"
+							]
+						},
+						"description": "Crea una nueva tarea asociada al usuario autenticado."
+					},
+					"response": [
+						{
+							"name": "Tarea creada exitosamente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"descripcion\": \"<string>\",\n  \"estadoId\": \"<integer>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"usuarioId\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tareas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+						},
+						{
+							"name": "No Autorizado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"descripcion\": \"<string>\",\n  \"estadoId\": \"<integer>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"usuarioId\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tareas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<integer>\",\n  \"descripcion\": \"<string>\",\n  \"fechaVencimiento\": \"<date>\",\n  \"estado\": \"<string>\",\n  \"usuario\": \"<string>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "Autenticar usuario",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								},
+								"description": "Autentica a un usuario y retorna un token JWT."
+							},
+							"response": [
+								{
+									"name": "Token generado exitosamente",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"token\": \"<string>\"\n}"
+								},
+								{
+									"name": "Credenciales invÃ¡lidas",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"token\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "estados-tarea",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtener estado de tarea segun id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/estados-tarea/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"estados-tarea",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) ID de la tarea"
+										}
+									]
+								},
+								"description": "Devuelve el estado de tarea correspondiente al id."
+							},
+							"response": [
+								{
+									"name": "Estado de tarea obtenido correctamente.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/estados-tarea/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"estados-tarea",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"nombre\": \"<string>\"\n}"
+								},
+								{
+									"name": "Se requiere autenticaciÃ³n",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/estados-tarea/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"estados-tarea",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"nombre\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Obtener estados de tarea",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/estados-tarea",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estados-tarea"
+							]
+						},
+						"description": "Devuelve la lista de estados disponibles para las tareas."
+					},
+					"response": [
+						{
+							"name": "Lista de estados obtenida correctamente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/estados-tarea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"estados-tarea"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"nombre\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"nombre\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Se requiere autenticaciÃ³n",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/estados-tarea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"estados-tarea"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"tareas\": [\n    {\n      \"id\": \"<integer>\",\n      \"nombre\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"nombre\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
